@@ -8,8 +8,7 @@ import static commons.enums.ErrorCode.NOT_FOUND_FACE_AMOUNT;
 
 
 @Getter
-public class KpcFaceAmtException extends Exception{
-
+public class KpcFaceAmtException extends Exception {
 
 
     private String errorMessage;
@@ -21,9 +20,6 @@ public class KpcFaceAmtException extends Exception{
         this.errorCode = NOT_FOUND_FACE_AMOUNT;
         this.errorMessage = code.getMessage();
     }
-
-
-
 
 
 }
