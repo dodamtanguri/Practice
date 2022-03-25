@@ -1,26 +1,22 @@
 
-import java.net.Inet4Address;
-import java.text.DecimalFormat;
-import java.util.stream.Stream;
 
 public class FaceAmtUtil {
-    public static void main(String[] args) {
-        String[] test = {
-                "123.000",
-                "               5123123",
-                "0.3212332111",
-                "()()()@#$%#@#$@#$35000",
-                "35,000",
-                "150000000",
-                "78",
-                "0"
-        };
-        Integer[] arr = Stream.of(test).map(el -> {
-            String temp = el.replaceAll("[^0-9.]","");
-            return Integer.parseInt(new DecimalFormat("#").format(Double.parseDouble(temp)));
-        }).toArray(Integer[]::new);
-        for(int el : arr) {
-            System.out.println(el + " ");
+
+    public static double toNumberFormat(String faceAmt) {
+        if (faceAmt != null || faceAmt.equals("")) {
+            return 0;
         }
+
+
+        try {
+            return Double.parseDouble(faceAmt.replaceAll("[^0-9,]", ""));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(toNumberFormat("23000.0"));
     }
 }
